@@ -5,4 +5,4 @@ Feature: Login SwabLabs Website
 
   Scenario: Login successfully
     Given that Leo is browsing the home page
-    When
+    When he login with authenticated account

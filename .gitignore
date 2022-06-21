@@ -13,4 +13,4 @@ gradlew.bat
 history
 build
 bin
-src/test/resources/webdriver/
+src/test/resources/webdriver/Login.feature
