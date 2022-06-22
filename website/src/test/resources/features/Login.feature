@@ -4,5 +4,6 @@ Feature: Login SwabLabs Website
   So that I need to log into my account
 
   Scenario: Login successfully
-    Given that Leo is browsing the home page
+    Given that Leo is browsing the login page
     When he login with authenticated account
+    Then the shopping cart will be displayed

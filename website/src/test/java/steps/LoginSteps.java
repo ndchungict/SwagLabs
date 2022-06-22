@@ -8,15 +8,16 @@ import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.ensure.Ensure;
 import net.thucydides.core.annotations.Managed;
 import org.openqa.selenium.WebDriver;
-import question.LoginBox;
 import task.Login;
+import ui.ProductCatalog;
 import ui.LoginPage;
 
 public class LoginSteps {
     @Managed
     WebDriver browser;
-    @And("^that (.*) is browsing the home page$")
-    public void verifyThatUserIsOnTheHomePage(String actorName){
+
+    @And("^that (.*) is browsing the login page$")
+    public void verifyThatUserIsOnTheLoginPage(String actorName){
         OnStage.theActorCalled(actorName).whoCan(BrowseTheWeb.with(browser)).attemptsTo(
                 Open.url("https://www.saucedemo.com/"),
                 Ensure.that(LoginPage.LOGIN_BOX).isDisplayed()
@@ -26,7 +27,14 @@ public class LoginSteps {
     @And("^(?:he|she|they|we) login with authenticated account$")
     public void loginWithAuthenticatedAccount(){
         OnStage.theActorInTheSpotlight().attemptsTo(
-                Login.with(new Authenticate("abc","abc"))
+                Login.with(new Authenticate("standard_user","secret_sauce"))
+        );
+    }
+
+    @And("^the shopping cart will be displayed$")
+    public void ensureThatTheShoppingCartWillBeDisplayed(){
+        OnStage.theActorInTheSpotlight().attemptsTo(
+                Ensure.that(ProductCatalog.IMG_SHOPPING_CART).isDisplayed()
         );
     }
 }
