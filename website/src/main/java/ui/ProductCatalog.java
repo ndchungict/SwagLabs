@@ -15,4 +15,12 @@ public class ProductCatalog {
 
     public static Target TXT_ITEMS_PRICE = Target.the("items price")
             .located(By.className("inventory_item_price"));
+
+    public static Target PRODUCT_ITEMS = Target.the("items price")
+            .located(By.className("inventory_item"));
+
+    public static Target TXT_ITEMS_PRICE(String productName){
+        return Target.the("price text box of "+ productName)
+                .located(By.xpath("//[@text='"+productName+"']/..//div"));
+    }
 }
